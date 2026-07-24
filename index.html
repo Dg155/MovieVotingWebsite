@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 Movie Night</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ==================== SETUP PHASE ==================== -->
+  <section id="phase-setup" class="phase active">
+    <header>
+      <h1>🎬 Movie Night</h1>
+      <p>Add the movies you're considering</p>
+    </header>
+    <main class="container">
+      <!-- Add Movie Form -->
+      <form id="movie-form" class="card">
+        <h2>Add a Movie</h2>
+        <div class="form-row">
+          <div class="form-group grow">
+            <label for="inp-title">Title *</label>
+            <input type="text" id="inp-title" required placeholder="The Grand Budapest Hotel">
+          </div>
+          <div class="form-group" style="width:90px">
+            <label for="inp-year">Year</label>
+            <input type="text" id="inp-year" placeholder="2014" maxlength="4">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group grow">
+            <label for="inp-director">Director</label>
+            <input type="text" id="inp-director" placeholder="Wes Anderson">
+          </div>
+          <div class="form-group grow">
+            <label for="inp-genre">Genre</label>
+            <input type="text" id="inp-genre" placeholder="Comedy, Drama">
+          </div>
+          <div class="form-group" style="width:100px">
+            <label for="inp-runtime">Runtime</label>
+            <input type="text" id="inp-runtime" placeholder="99 min">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inp-desc">Description</label>
+          <textarea id="inp-desc" rows="2" placeholder="A brief plot summary..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="inp-poster">Poster URL <span style="text-transform:none;font-weight:400">(optional)</span></label>
+          <input type="url" id="inp-poster" placeholder="https://image.tmdb.org/t/p/w300/...">
+        </div>
+        <button type="submit" class="btn gold">+ Add Movie</button>
+      </form>
+      <!-- Movie List -->
+      <div id="movies-list"></div>
+      <!-- Start Button -->
+      <button id="btn-start" class="btn green big" disabled>
+        Start Voting Session
+      </button>
+    </main>
+  </section>
+  <!-- ==================== LOBBY PHASE ==================== -->
+  <section id="phase-lobby" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+      <p>Scan the code to cast your vote</p>
+    </header>
+    <main class="container">
+      <!-- QR Code -->
+      <div class="card" style="text-align:center">
+        <div id="qr-container">
+          <img id="qr-img" alt="QR Code" width="220" height="220">
+        </div>
+        <p class="room-label">Room Code</p>
+        <p class="room-code" id="disp-room"></p>
+        <p class="url-display" id="disp-url"></p>
+        <button id="btn-copy" class="btn ghost small">📋 Copy Link</button>
+      </div>
+      <!-- Voters -->
+      <div class="card">
+        <h2>Voters <span id="voter-count" class="badge">0</span></h2>
+        <div id="voters-list">
+          <p class="muted center-text">Waiting for voters to join…</p>
+        </div>
+      </div>
+      <!-- Tonight's Movies -->
+      <div class="card">
+        <h2>Tonight's Options</h2>
+        <div id="lobby-movies"></div>
+      </div>
+      <!-- Reveal Button -->
+      <button id="btn-reveal" class="btn gold big" disabled>
+        🎉 Reveal Results
+      </button>
+    </main>
+  </section>
+  <!-- ==================== RESULTS PHASE ==================== -->
+  <section id="phase-results" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+      <p>The votes are in!</p>
+    </header>
+    <main class="container">
+      <div id="winner-banner" class="card winner-card"></div>
+      <div id="results-bars"></div>
+      <button id="btn-reset" class="btn ghost big">🔄 New Session</button>
+    </main>
+  </section>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="host.js"></script>
+</body>
+</html>

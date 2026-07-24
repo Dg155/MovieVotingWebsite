@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 Movie Night — Vote</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ==================== NAME ENTRY ==================== -->
+  <section id="state-name" class="phase active">
+    <header>
+      <h1>🎬 Movie Night</h1>
+      <p>Join the vote!</p>
+    </header>
+    <main class="container">
+      <div class="card" style="text-align:center">
+        <div class="name-form">
+          <label for="inp-name">Your Name</label>
+          <input type="text" id="inp-name" placeholder="Enter your name" autocomplete="off" autofocus>
+          <div id="room-input-group" style="display:none; margin-top:0.75rem;">
+            <label for="inp-room">Room Code</label>
+            <input type="text" id="inp-room" placeholder="XXXXX"
+              style="text-transform:uppercase; text-align:center; letter-spacing:0.2em; font-weight:700;"
+              maxlength="6" autocomplete="off">
+          </div>
+          <button id="btn-join" class="btn gold big" disabled>Join Session</button>
+        </div>
+      </div>
+    </main>
+  </section>
+  <!-- ==================== CONNECTING ==================== -->
+  <section id="state-connecting" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+    </header>
+    <main class="container center-text">
+      <div class="spinner"></div>
+      <p class="muted">Connecting to session…</p>
+    </main>
+  </section>
+  <!-- ==================== VOTING ==================== -->
+  <section id="state-voting" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+      <p id="greeting"></p>
+    </header>
+    <main class="container">
+      <div class="points-banner" id="points-banner">
+        <span class="pts-num" id="pts-remaining">0</span>
+        <span class="pts-label">points remaining</span>
+      </div>
+      <div id="vote-movies"></div>
+      <button id="btn-submit" class="btn gold big" disabled>Submit Vote</button>
+    </main>
+  </section>
+  <!-- ==================== SUBMITTED ==================== -->
+  <section id="state-submitted" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+    </header>
+    <main class="container center-text">
+      <div class="big-emoji">✅</div>
+      <h2>Vote Submitted!</h2>
+      <p class="muted" style="margin-top:0.5rem">Waiting for the host to reveal results…</p>
+    </main>
+  </section>
+  <!-- ==================== RESULTS ==================== -->
+  <section id="state-results" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+      <p>The votes are in!</p>
+    </header>
+    <main class="container">
+      <div id="voter-winner" class="card winner-card"></div>
+      <div id="voter-results-bars"></div>
+    </main>
+  </section>
+  <!-- ==================== ERROR ==================== -->
+  <section id="state-error" class="phase">
+    <header>
+      <h1>🎬 Movie Night</h1>
+    </header>
+    <main class="container center-text">
+      <div class="big-emoji">😕</div>
+      <h2>Connection Failed</h2>
+      <p class="muted" id="error-msg" style="margin:0.5rem 0 1.5rem">
+        Could not connect to the session.
+      </p>
+      <button class="btn ghost" onclick="location.reload()">Try Again</button>
+    </main>
+  </section>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="vote.js"></script>
+</body>
+</html>
