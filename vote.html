@@ -3,95 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎬 Movie Night — Vote</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+  <title>Movie Night · Vote</title>
+  <script>
+    if (sessionStorage.getItem('mn-intro-played')) {
+      document.documentElement.classList.add('skip-intro');
+    } else {
+      sessionStorage.setItem('mn-intro-played', '1');
+    }
+  </script>
+  <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ==================== NAME ENTRY ==================== -->
-  <section id="state-name" class="phase active">
-    <header>
-      <h1>🎬 Movie Night</h1>
-      <p>Join the vote!</p>
-    </header>
-    <main class="container">
-      <div class="card" style="text-align:center">
-        <div class="name-form">
+<!-- ============ PRELOADER ============ -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <svg class="hex-svg" viewBox="0 0 200 200" aria-hidden="true">
+      <path class="hex-line p1" pathLength="1" d="M100 22 L167.5 61 L167.5 139"/>
+      <path class="hex-line p2" pathLength="1" d="M167.5 139 L100 178 L32.5 139"/>
+      <path class="hex-line p3" pathLength="1" d="M32.5 139 L32.5 61 L100 22"/>
+    </svg>
+    <img class="hex-logo" src="assets/logo.png" alt=""
+         onerror="this.style.display='none';
+                  document.getElementById('hex-fallback').style.display='flex';">
+    <div class="hex-logo hex-logo-fallback" id="hex-fallback" style="display:none">🎬</div>
+  </div>
+</div>
+<!-- ============ HEADER ============ -->
+<header>
+  <a class="brand" href="vote.html">
+    <img class="brand-logo" src="assets/logo.png" alt="" onerror="this.remove()">
+    <h1>MOVIE NIGHT</h1>
+  </a>
+  <nav>
+    <span class="nav-chip" id="nav-room">Room —</span>
+  </nav>
+</header>
+<main class="page">
+  <!-- ========== JOIN ========== -->
+  <section id="state-join" class="phase active">
+    <div class="panel reveal reveal-up">
+      <h2>Join the Vote</h2>
+      <p class="panel-sub">Your ballot stays secret until results are revealed</p>
+      <form class="join-form" id="join-form">
+        <div class="field">
           <label for="inp-name">Your Name</label>
-          <input type="text" id="inp-name" placeholder="Enter your name" autocomplete="off" autofocus>
-          <div id="room-input-group" style="display:none; margin-top:0.75rem;">
-            <label for="inp-room">Room Code</label>
-            <input type="text" id="inp-room" placeholder="XXXXX"
-              style="text-transform:uppercase; text-align:center; letter-spacing:0.2em; font-weight:700;"
-              maxlength="6" autocomplete="off">
-          </div>
-          <button id="btn-join" class="btn gold big" disabled>Join Session</button>
+          <input id="inp-name" type="text" autocomplete="off" placeholder="Alex" required>
         </div>
-      </div>
-    </main>
+        <div class="field" id="room-field" hidden>
+          <label for="inp-room">Room Code</label>
+          <input id="inp-room" type="text" maxlength="5" autocomplete="off" placeholder="XXXXX">
+        </div>
+        <button type="submit" id="btn-join" class="btn solid block" disabled>
+          <span>Join Session</span>
+        </button>
+      </form>
+    </div>
   </section>
-  <!-- ==================== CONNECTING ==================== -->
+  <!-- ========== CONNECTING ========== -->
   <section id="state-connecting" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-    </header>
-    <main class="container center-text">
+    <div class="status-screen">
       <div class="spinner"></div>
-      <p class="muted">Connecting to session…</p>
-    </main>
+      <h2>Connecting</h2>
+      <p>Reaching the host…</p>
+    </div>
   </section>
-  <!-- ==================== VOTING ==================== -->
+  <!-- ========== VOTING ========== -->
   <section id="state-voting" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-      <p id="greeting"></p>
-    </header>
-    <main class="container">
-      <div class="points-banner" id="points-banner">
-        <span class="pts-num" id="pts-remaining">0</span>
-        <span class="pts-label">points remaining</span>
-      </div>
-      <div id="vote-movies"></div>
-      <button id="btn-submit" class="btn gold big" disabled>Submit Vote</button>
-    </main>
+    <h2 class="section-title" id="vote-title">Cast Your Ballot</h2>
+    <p class="section-role" id="vote-sub"></p>
+    <div class="points-banner" id="points-banner">
+      <span class="points-num" id="pts-remaining">0</span>
+      <span class="points-label">Points Remaining</span>
+    </div>
+    <div id="vote-movies"></div>
+    <button id="btn-submit" class="btn solid block" disabled>
+      <span>Submit Ballot</span>
+    </button>
   </section>
-  <!-- ==================== SUBMITTED ==================== -->
+  <!-- ========== SUBMITTED ========== -->
   <section id="state-submitted" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-    </header>
-    <main class="container center-text">
-      <div class="big-emoji">✅</div>
-      <h2>Vote Submitted!</h2>
-      <p class="muted" style="margin-top:0.5rem">Waiting for the host to reveal results…</p>
-    </main>
+    <div class="status-screen">
+      <div class="status-emoji">🍿</div>
+      <h2>Ballot Locked In</h2>
+      <p>Waiting for the host to reveal the results…</p>
+      <div class="spinner"></div>
+    </div>
   </section>
-  <!-- ==================== RESULTS ==================== -->
+  <!-- ========== RESULTS ========== -->
   <section id="state-results" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-      <p>The votes are in!</p>
-    </header>
-    <main class="container">
-      <div id="voter-winner" class="card winner-card"></div>
-      <div id="voter-results-bars"></div>
-    </main>
+    <h2 class="section-title">The Votes Are In</h2>
+    <p class="section-role">Grab the popcorn</p>
+    <div id="voter-winner" class="panel winner-panel"></div>
+    <div id="voter-bars"></div>
   </section>
-  <!-- ==================== ERROR ==================== -->
+  <!-- ========== ERROR ========== -->
   <section id="state-error" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-    </header>
-    <main class="container center-text">
-      <div class="big-emoji">😕</div>
+    <div class="status-screen">
+      <div class="status-emoji">📡</div>
       <h2>Connection Failed</h2>
-      <p class="muted" id="error-msg" style="margin:0.5rem 0 1.5rem">
-        Could not connect to the session.
-      </p>
-      <button class="btn ghost" onclick="location.reload()">Try Again</button>
-    </main>
+      <p id="error-msg">Could not reach the host session.</p>
+      <button class="btn ghost" onclick="location.reload()"><span>Try Again</span></button>
+    </div>
   </section>
-  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-  <script src="vote.js"></script>
+</main>
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox">
+  <button id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" alt="">
+</div>
+<footer>
+  <div class="footer-nav">
+    <a href="index.html"><span>Host a Session</span></a>
+  </div>
+  <p class="footer-copy">Movie Night · Peer-to-peer, no server required</p>
+</footer>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="common.js"></script>
+<script src="vote.js"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+{
+  "movies": [
+    {
+      "title": "The Grand Budapest Hotel",
+      "year": "2014",
+      "director": "Wes Anderson",
+      "genre": "Comedy / Drama",
+      "runtime": "99 min",
+      "description": "A legendary concierge and his trusted lobby boy become entangled in the theft of a priceless Renaissance painting and a battle over an enormous family fortune.",
+      "poster": ""
+    },
+    {
+      "title": "Blade Runner 2049",
+      "year": "2017",
+      "director": "Denis Villeneuve",
+      "genre": "Sci-Fi / Thriller",
+      "runtime": "164 min",
+      "description": "A young blade runner uncovers a long-buried secret that has the potential to plunge what's left of society into chaos, leading him on a hunt for a man missing for thirty years.",
+      "poster": ""
+    },
+    {
+      "title": "Everything Everywhere All at Once",
+      "year": "2022",
+      "director": "Daniel Kwan, Daniel Scheinert",
+      "genre": "Sci-Fi / Comedy",
+      "runtime": "139 min",
+      "description": "An exhausted laundromat owner is swept into an insane adventure where she alone can save existence by exploring other universes and the lives she could have lived.",
+      "poster": ""
+    },
+    {
+      "title": "Mad Max: Fury Road",
+      "year": "2015",
+      "director": "George Miller",
+      "genre": "Action / Adventure",
+      "runtime": "120 min",
+      "description": "In a post-apocalyptic wasteland, a drifter and a rebellious warrior flee from a tyrannical cult leader across a blistering desert in an armored war rig.",
+      "poster": ""
+    },
+    {
+      "title": "Parasite",
+      "year": "2019",
+      "director": "Bong Joon-ho",
+      "genre": "Thriller / Drama",
+      "runtime": "132 min",
+      "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+      "poster": ""
+    },
+    {
+      "title": "Spider-Man: Into the Spider-Verse",
+      "year": "2018",
+      "director": "Persichetti, Ramsey & Rothman",
+      "genre": "Animation / Action",
+      "runtime": "117 min",
+      "description": "Teen Miles Morales becomes the Spider-Man of his universe and must join with five counterparts from other dimensions to stop a threat to all reality.",
+      "poster": ""
+    }
+  ]
+}

@@ -3,111 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎬 Movie Night</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+  <title>Movie Night</title>
+  <!-- Skip the intro on refresh / repeat visits (must run before paint) -->
+  <script>
+    if (sessionStorage.getItem('mn-intro-played')) {
+      document.documentElement.classList.add('skip-intro');
+    } else {
+      sessionStorage.setItem('mn-intro-played', '1');
+    }
+  </script>
+  <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ==================== SETUP PHASE ==================== -->
+<!-- ============ PRELOADER ============ -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <svg class="hex-svg" viewBox="0 0 200 200" aria-hidden="true">
+      <path class="hex-line p1" pathLength="1" d="M100 22 L167.5 61 L167.5 139"/>
+      <path class="hex-line p2" pathLength="1" d="M167.5 139 L100 178 L32.5 139"/>
+      <path class="hex-line p3" pathLength="1" d="M32.5 139 L32.5 61 L100 22"/>
+    </svg>
+    <img class="hex-logo" src="assets/logo.png" alt=""
+         onerror="this.style.display='none';
+                  document.getElementById('hex-fallback').style.display='flex';">
+    <div class="hex-logo hex-logo-fallback" id="hex-fallback" style="display:none">🎬</div>
+  </div>
+</div>
+<!-- ============ HEADER ============ -->
+<header>
+  <a class="brand" href="index.html">
+    <img class="brand-logo" src="assets/logo.png" alt="" onerror="this.remove()">
+    <h1>MOVIE NIGHT</h1>
+  </a>
+  <nav>
+    <a href="#" class="nav-step active" data-step="phase-setup">1 · Lineup</a>
+    <a href="#" class="nav-step"        data-step="phase-lobby">2 · Voting</a>
+    <a href="#" class="nav-step"        data-step="phase-results">3 · Results</a>
+  </nav>
+</header>
+<main class="page">
+  <!-- ================= SETUP ================= -->
   <section id="phase-setup" class="phase active">
-    <header>
-      <h1>🎬 Movie Night</h1>
-      <p>Add the movies you're considering</p>
-    </header>
-    <main class="container">
-      <!-- Add Movie Form -->
-      <form id="movie-form" class="card">
-        <h2>Add a Movie</h2>
-        <div class="form-row">
-          <div class="form-group grow">
-            <label for="inp-title">Title *</label>
-            <input type="text" id="inp-title" required placeholder="The Grand Budapest Hotel">
+    <h2 class="section-title reveal reveal-up">Tonight's Lineup</h2>
+    <p class="section-role reveal reveal-up delay-1">Add or remove titles before voting opens</p>
+    <div id="notice" class="notice hidden"></div>
+    <!-- Add movie -->
+    <div class="panel reveal reveal-up delay-2">
+      <h2>Add a Movie</h2>
+      <p class="panel-sub">Only the title is required</p>
+      <form id="movie-form">
+        <div class="form-grid">
+          <div class="field col-8">
+            <label for="inp-title">Title</label>
+            <input id="inp-title" type="text" required placeholder="The Grand Budapest Hotel">
           </div>
-          <div class="form-group" style="width:90px">
+          <div class="field col-4">
             <label for="inp-year">Year</label>
-            <input type="text" id="inp-year" placeholder="2014" maxlength="4">
+            <input id="inp-year" type="text" maxlength="4" placeholder="2014">
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group grow">
+          <div class="field col-4">
             <label for="inp-director">Director</label>
-            <input type="text" id="inp-director" placeholder="Wes Anderson">
+            <input id="inp-director" type="text" placeholder="Wes Anderson">
           </div>
-          <div class="form-group grow">
+          <div class="field col-4">
             <label for="inp-genre">Genre</label>
-            <input type="text" id="inp-genre" placeholder="Comedy, Drama">
+            <input id="inp-genre" type="text" placeholder="Comedy / Drama">
           </div>
-          <div class="form-group" style="width:100px">
+          <div class="field col-4">
             <label for="inp-runtime">Runtime</label>
-            <input type="text" id="inp-runtime" placeholder="99 min">
+            <input id="inp-runtime" type="text" placeholder="99 min">
+          </div>
+          <div class="field col-12">
+            <label for="inp-desc">Description</label>
+            <textarea id="inp-desc" rows="2" placeholder="A brief plot summary…"></textarea>
+          </div>
+          <div class="field col-12">
+            <label for="inp-poster">Poster URL — optional</label>
+            <input id="inp-poster" type="url" placeholder="https://image.tmdb.org/t/p/w500/…">
           </div>
         </div>
-        <div class="form-group">
-          <label for="inp-desc">Description</label>
-          <textarea id="inp-desc" rows="2" placeholder="A brief plot summary..."></textarea>
-        </div>
-        <div class="form-group">
-          <label for="inp-poster">Poster URL <span style="text-transform:none;font-weight:400">(optional)</span></label>
-          <input type="url" id="inp-poster" placeholder="https://image.tmdb.org/t/p/w300/...">
-        </div>
-        <button type="submit" class="btn gold">+ Add Movie</button>
+        <button type="submit" class="btn block"><span>＋ Add to Lineup</span></button>
       </form>
-      <!-- Movie List -->
-      <div id="movies-list"></div>
-      <!-- Start Button -->
-      <button id="btn-start" class="btn green big" disabled>
-        Start Voting Session
-      </button>
-    </main>
+    </div>
+    <!-- Lineup -->
+    <div class="lineup-head reveal reveal-up delay-3">
+      <div>
+        <h2>The Candidates <span id="lineup-count" class="muted"></span></h2>
+        <p class="count-note" id="points-note"></p>
+      </div>
+      <div class="row">
+        <button id="btn-presets" class="btn ghost small"><span>⟲ Reset to Presets</span></button>
+        <button id="btn-clear"   class="btn ghost small"><span>✕ Clear All</span></button>
+      </div>
+    </div>
+    <div id="lineup"></div>
+    <button id="btn-start" class="btn solid block" disabled>
+      <span>Start Voting Session</span>
+    </button>
   </section>
-  <!-- ==================== LOBBY PHASE ==================== -->
+  <!-- ================= LOBBY ================= -->
   <section id="phase-lobby" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-      <p>Scan the code to cast your vote</p>
-    </header>
-    <main class="container">
-      <!-- QR Code -->
-      <div class="card" style="text-align:center">
-        <div id="qr-container">
-          <img id="qr-img" alt="QR Code" width="220" height="220">
-        </div>
-        <p class="room-label">Room Code</p>
-        <p class="room-code" id="disp-room"></p>
-        <p class="url-display" id="disp-url"></p>
-        <button id="btn-copy" class="btn ghost small">📋 Copy Link</button>
+    <h2 class="section-title">Voting Is Open</h2>
+    <p class="section-role">Scan the code — one ballot per phone</p>
+    <div class="panel center reveal reveal-up">
+      <div class="qr-frame">
+        <img id="qr-img" width="230" height="230" alt="Join QR code">
       </div>
-      <!-- Voters -->
-      <div class="card">
-        <h2>Voters <span id="voter-count" class="badge">0</span></h2>
-        <div id="voters-list">
-          <p class="muted center-text">Waiting for voters to join…</p>
-        </div>
+      <p class="room-code" id="disp-room">—</p>
+      <p class="room-url"  id="disp-url"></p>
+      <button id="btn-copy" class="btn ghost small"><span>📋 Copy Link</span></button>
+    </div>
+    <div class="panel reveal reveal-up delay-1">
+      <h2>Voters <span id="voter-count" class="muted">(0)</span></h2>
+      <p class="panel-sub" id="voted-note">Waiting for the first ballot</p>
+      <div id="voters-list">
+        <p class="muted center" style="letter-spacing:1px">No one has joined yet…</p>
       </div>
-      <!-- Tonight's Movies -->
-      <div class="card">
-        <h2>Tonight's Options</h2>
-        <div id="lobby-movies"></div>
-      </div>
-      <!-- Reveal Button -->
-      <button id="btn-reveal" class="btn gold big" disabled>
-        🎉 Reveal Results
-      </button>
-    </main>
+    </div>
+    <div class="panel reveal reveal-up delay-2">
+      <h2>On the Ballot</h2>
+      <p class="panel-sub" id="lobby-points-note"></p>
+      <div id="lobby-movies"></div>
+    </div>
+    <button id="btn-reveal" class="btn solid block" disabled>
+      <span>🏆 Reveal Results</span>
+    </button>
   </section>
-  <!-- ==================== RESULTS PHASE ==================== -->
+  <!-- ================= RESULTS ================= -->
   <section id="phase-results" class="phase">
-    <header>
-      <h1>🎬 Movie Night</h1>
-      <p>The votes are in!</p>
-    </header>
-    <main class="container">
-      <div id="winner-banner" class="card winner-card"></div>
-      <div id="results-bars"></div>
-      <button id="btn-reset" class="btn ghost big">🔄 New Session</button>
-    </main>
+    <h2 class="section-title">The Votes Are In</h2>
+    <p class="section-role">Grab the popcorn</p>
+    <div id="winner-panel" class="panel winner-panel reveal reveal-up"></div>
+    <div id="results-bars"></div>
+    <button id="btn-reset" class="btn ghost block"><span>↺ New Session</span></button>
   </section>
-  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-  <script src="host.js"></script>
+</main>
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox">
+  <button id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" alt="">
+</div>
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-nav">
+    <a href="index.html"><span>Host</span></a>
+    <a href="vote.html"><span>Vote</span></a>
+    <a href="movies.json" target="_blank" rel="noopener"><span>Lineup JSON</span></a>
+  </div>
+  <p class="footer-copy">Movie Night · Peer-to-peer, no server required</p>
+</footer>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="common.js"></script>
+<script src="host.js"></script>
 </body>
 </html>
