@@ -1,58 +1,58 @@
 {
   "movies": [
     {
-      "title": "The Grand Budapest Hotel",
-      "year": "2014",
-      "director": "Wes Anderson",
-      "genre": "Comedy / Drama",
-      "runtime": "99 min",
-      "description": "A legendary concierge and his trusted lobby boy become entangled in the theft of a priceless Renaissance painting and a battle over an enormous family fortune.",
-      "poster": ""
+      "title": "Godzilla Minus One",
+      "year": "2023",
+      "director": "Takashi Yamazaki",
+      "genre": "Action / Drama / Sci-Fi",
+      "runtime": "124 min",
+      "description": "In post-war Japan, a devastated nation faces a new crisis when Godzilla emerges, forcing ordinary people to confront an unstoppable force while struggling to rebuild their lives.",
+      "poster": "https://imgs.search.brave.com/Muv-_ueyyMvNhRI9XgA8TkJZo6ErWwR25tpkhJvCAio/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnJl/ZGQuaXQvcWFrOTVo/ZWdvZGJiMS5qcGc"
     },
     {
-      "title": "Blade Runner 2049",
-      "year": "2017",
-      "director": "Denis Villeneuve",
-      "genre": "Sci-Fi / Thriller",
-      "runtime": "164 min",
-      "description": "A young blade runner uncovers a long-buried secret that has the potential to plunge what's left of society into chaos, leading him on a hunt for a man missing for thirty years.",
-      "poster": ""
+      "title": "Jeepers Creepers",
+      "year": "2001",
+      "director": "Victor Salva",
+      "genre": "Horror / Mystery",
+      "runtime": "90 min",
+      "description": "Two siblings traveling home for spring break become the targets of a terrifying creature that awakens every twenty-three years to feed.",
+      "poster": "https://imgs.search.brave.com/svGYbjkzBdxCI78biLzeb_vgpGF5IwuOmi_A8gdPuHM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9zZW8vUG9z/dGVyYXp6aS1NT1Yx/OTA0OTItSmVlcGVy/cy1DcmVlcGVycy1N/b3ZpZS1Qb3N0ZXIt/MTEteC0xNy1pbl82/NjI4YzNhYi1kOTgx/LTRmMmYtOTQ4Ni02/N2FiNmUwODA5MTcu/MDdkM2JhOTViYjJj/Mzg0MzY2ZmJiNzk2/ZTE5ZTc3NmEuanBl/Zz9vZG5IZWlnaHQ9/NTczJm9kbldpZHRo/PTU3MyZvZG5CZz1G/RkZGRkY"
     },
     {
-      "title": "Everything Everywhere All at Once",
-      "year": "2022",
-      "director": "Daniel Kwan, Daniel Scheinert",
-      "genre": "Sci-Fi / Comedy",
-      "runtime": "139 min",
-      "description": "An exhausted laundromat owner is swept into an insane adventure where she alone can save existence by exploring other universes and the lives she could have lived.",
-      "poster": ""
-    },
-    {
-      "title": "Mad Max: Fury Road",
-      "year": "2015",
-      "director": "George Miller",
-      "genre": "Action / Adventure",
-      "runtime": "120 min",
-      "description": "In a post-apocalyptic wasteland, a drifter and a rebellious warrior flee from a tyrannical cult leader across a blistering desert in an armored war rig.",
-      "poster": ""
-    },
-    {
-      "title": "Parasite",
+      "title": "Once Upon a Time in Hollywood",
       "year": "2019",
-      "director": "Bong Joon-ho",
-      "genre": "Thriller / Drama",
-      "runtime": "132 min",
-      "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-      "poster": ""
+      "director": "Quentin Tarantino",
+      "genre": "Comedy / Drama",
+      "runtime": "161 min",
+      "description": "A fading television actor and his loyal stunt double navigate the changing film industry in 1969 Los Angeles as Hollywood enters a new era.",
+      "poster": "https://imgs.search.brave.com/AJM2QQfSn3V08xpxLpWnGILW4qkDpwujva39J5aWLgY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2Nobml0dGJlcmlj/aHRlLmNvbS9waWNz/L3RpdGVsLzY0MDAw/LzY0NDY2XzIzMC5q/cGc"
     },
     {
-      "title": "Spider-Man: Into the Spider-Verse",
-      "year": "2018",
-      "director": "Persichetti, Ramsey & Rothman",
-      "genre": "Animation / Action",
-      "runtime": "117 min",
-      "description": "Teen Miles Morales becomes the Spider-Man of his universe and must join with five counterparts from other dimensions to stop a threat to all reality.",
-      "poster": ""
+      "title": "Children of Men",
+      "year": "2006",
+      "director": "Alfonso Cuarón",
+      "genre": "Sci-Fi / Drama / Thriller",
+      "runtime": "109 min",
+      "description": "In a future where humanity faces extinction due to global infertility, a disillusioned bureaucrat is tasked with protecting the world's first pregnant woman in decades.",
+      "poster": "https://imgs.search.brave.com/nQrcFX_p2aIR7J7OHETeMa_VKXvGT-ZXC0TwqB-L8_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y2luZW1hdGVyaWFs/LmNvbS9wLzEzNngv/bWZud3VhZzQvY2hp/bGRyZW4tb2YtbWVu/LW1vdmllLWNvdmVy/LXNtLmpwZz92PTE0/NTYzMTY0Nzg"
+    },
+    {
+      "title": "Rear Window",
+      "year": "1954",
+      "director": "Alfred Hitchcock",
+      "genre": "Mystery / Thriller",
+      "runtime": "112 min",
+      "description": "Confined to his apartment with a broken leg, a photographer becomes convinced he has witnessed a murder after observing his neighbors through his rear window.",
+      "poster": "https://imgs.search.brave.com/5bqeDvK0bWKeGfKGST1eriSyx6BU-L8HYD3Bf5aGRwY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzU2L2Yw/LzNiLzU2ZjAzYjAx/OTk0OGMwYzJjZmZm/NTk4OWI4ZTNkODAw/LmpwZw"
+    },
+    {
+      "title": "Requiem for a Dream",
+      "year": "2000",
+      "director": "Darren Aronofsky",
+      "genre": "Drama",
+      "runtime": "102 min",
+      "description": "The lives of four people unravel as their dreams and ambitions become consumed by addiction, leading to devastating consequences.",
+      "poster": "https://imgs.search.brave.com/09HUgv6INBtWQ9kUzK0n65xu_p7Q01xWFgBtBDafV5o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9zZW8vUG9w/LUN1bHR1cmUtR3Jh/cGhpY3MtUmVxdWll/bS1mb3ItYS1EcmVh/bS1Nb3ZpZS1Qb3N0/ZXItMTEteC0xN18x/MmMwZGIzMC03ZTI5/LTQwYTEtODBmZC1j/YmRlZWY5ODdiZTku/MGYzMjQzNDg1M2Fh/NmQ5YTBlNzcwNWM1/OGU3MzkwNmYuanBl/Zz9vZG5IZWlnaHQ9/NTczJm9kbldpZHRo/PTU3MyZvZG5CZz1G/RkZGRkY"
     }
   ]
 }

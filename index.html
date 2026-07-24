@@ -4,31 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movie Night</title>
-  <!-- Skip the intro on refresh / repeat visits (must run before paint) -->
-  <script>
-    if (sessionStorage.getItem('mn-intro-played')) {
-      document.documentElement.classList.add('skip-intro');
-    } else {
-      sessionStorage.setItem('mn-intro-played', '1');
-    }
-  </script>
   <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!-- ============ PRELOADER ============ -->
 <div id="preloader">
-  <div class="preloader-inner">
-    <svg class="hex-svg" viewBox="0 0 200 200" aria-hidden="true">
-      <path class="hex-line p1" pathLength="1" d="M100 22 L167.5 61 L167.5 139"/>
-      <path class="hex-line p2" pathLength="1" d="M167.5 139 L100 178 L32.5 139"/>
-      <path class="hex-line p3" pathLength="1" d="M32.5 139 L32.5 61 L100 22"/>
-    </svg>
-    <img class="hex-logo" src="assets/logo.png" alt=""
-         onerror="this.style.display='none';
-                  document.getElementById('hex-fallback').style.display='flex';">
-    <div class="hex-logo hex-logo-fallback" id="hex-fallback" style="display:none">🎬</div>
-  </div>
+    <div class="preloader-inner">
+        <svg class="hex-svg" viewBox="0 0 200 200" aria-hidden="true">
+            <line class="hex-line p1" x1="181.4" y1="53"  x2="100"   y2="6"   pathLength="1"/>
+            <line class="hex-line p1" x1="18.6"  y1="147" x2="100"   y2="194" pathLength="1"/>
+            <line class="hex-line p2" x1="100"   y1="6"   x2="18.6"  y2="53"  pathLength="1"/>
+            <line class="hex-line p2" x1="100"   y1="194" x2="181.4" y2="147" pathLength="1"/>
+            <line class="hex-line p3" x1="18.6"  y1="53"  x2="18.6"  y2="147" pathLength="1"/>
+            <line class="hex-line p3" x1="181.4" y1="147" x2="181.4" y2="53"  pathLength="1"/>
+        </svg>
+        <img class="hex-logo" src="assets/logo.png  " alt="Daniel Boghossian logo">
+    </div>
 </div>
 <!-- ============ HEADER ============ -->
 <header>

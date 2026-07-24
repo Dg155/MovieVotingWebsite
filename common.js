@@ -2,8 +2,8 @@
    Shared helpers: preloader skip, reveals, lightbox, utilities
    ============================================================ */
 /* How long the intro animation runs before content should reveal */
-window.MN_INTRO_MS =
-  document.documentElement.classList.contains('skip-intro') ? 0 : 3100;
+const PREFERS_REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.MN_INTRO_MS = PREFERS_REDUCED ? 0 : 3100;
 /* ---------- tiny DOM helpers ---------- */
 const $  = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));

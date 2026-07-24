@@ -52,17 +52,20 @@ code {
     justify-content: center;
     animation: preloader-fade .8s ease 2.5s forwards;
 }
+
 .preloader-inner {
     position: relative;
     width: 200px;
     height: 200px;
 }
+
 .hex-svg {
     width: 100%;
     height: 100%;
     overflow: visible;
     animation: hex-fade-out .8s ease 1.3s forwards;
 }
+
 .hex-line {
     fill: none;
     stroke: var(--accent);
@@ -71,6 +74,7 @@ code {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
 }
+
 .hex-line.p1 {
     animation: hex-draw .5s ease forwards,
                hex-flash .5s ease forwards;
@@ -83,6 +87,7 @@ code {
     animation: hex-draw .5s ease .8s forwards,
                hex-flash .5s ease .8s forwards;
 }
+
 .hex-logo {
     position: absolute;
     inset: 0;
@@ -93,23 +98,36 @@ code {
     opacity: 0;
     animation: logo-fade .8s ease 1.3s forwards;
 }
-.hex-logo-fallback {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 76px;
-    line-height: 1;
+
+@keyframes hex-draw {
+    to { stroke-dashoffset: 0; }
 }
-@keyframes hex-draw   { to { stroke-dashoffset: 0; } }
+
 @keyframes hex-flash {
     0%   { filter: drop-shadow(0 0 0 transparent); }
     35%  { filter: drop-shadow(0 0 10px var(--accent))
                    drop-shadow(0 0 25px var(--accent)); }
     100% { filter: drop-shadow(0 0 3px var(--accent)); }
 }
-@keyframes hex-fade-out  { to { opacity: 0; } }
-@keyframes logo-fade     { to { opacity: 1; } }
-@keyframes preloader-fade{ to { opacity: 0; visibility: hidden; } }
+
+@keyframes hex-fade-out {
+    to { opacity: 0; }
+}
+
+@keyframes logo-fade {
+    to { opacity: 1; }
+}
+
+@keyframes preloader-fade {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #preloader { animation: preloader-fade .3s ease forwards; }
+    .hex-line  { animation: none; stroke-dashoffset: 0; }
+    .hex-svg   { animation: none; }
+    .hex-logo  { animation: none; opacity: 1; }
+}
 /* ===========================
    HEADER
    =========================== */
@@ -219,15 +237,6 @@ header nav > *:nth-child(4) { animation-delay: 3.30s; }
 @keyframes header-child-drop {
     from { opacity: 0; transform: translateY(-20px); }
     to   { opacity: 1; transform: none; }
-}
-/* Skip the intro on refresh / repeat visits */
-html.skip-intro #preloader { display: none; }
-html.skip-intro header .brand,
-html.skip-intro header nav,
-html.skip-intro header nav > * {
-    animation: none;
-    opacity: 1;
-    transform: none;
 }
 /* ===========================
    PAGE LAYOUT
