@@ -276,6 +276,7 @@ main.page {
     border-radius: 12px;
     padding: 36px;
     margin-bottom: 28px;
+    margin-top: 28px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, .35);
 }
 .panel h2 {
